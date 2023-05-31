@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        ul li {
+            list-style: none;
+            padding: 5px;
+        }
+
+        form {
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 
+    <h1>Global Variable</h1>
+    <p>Biến toàn cục là biến được khai báo bên ngoài các hàm hoặc khối lệnh</p>
+
+    <p>bai 1</p>
+    <button onclick="show()">Click me now</button>
+    <ul>
+        <p>bai 2</p>
+        <li><button onclick="show(0)">item one</button></li>
+        <li><button onclick="show(1)">item two</button></li>
+        <li><button onclick="show(2)">item three</button></li>
+    </ul>
+
+    <!--bai 3 change color -->
+    <!-- <button onclick="changeColor()">Change Color</button>
+
+    <!-- bai 4 thêm - xóa trong giỏ hàng-->
+    <!-- <p>Giỏ hàng của bạn (<span id="cart-count">0</span> sản phẩm)</p>
+    <button id="add-to-cart-button">Thêm vào giỏ hàng</button>
+    <button id="remove-from-cart-button">Xóa khỏi giỏ hàng</button>  -->
+
+    <!-- BAI 5 -->
+    <div>
+        <form id="formFirst">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" /><br />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" /><br />
+            <button type="button" onclick="check()">Submit first form</button>
+        </form>
+        <p id="error"></p>
+        <form id="formSecond">
+            <button type="button" onclick="show()">Show </button>
+        </form>
+
+
+        <!-- <form id="firstForm">
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email">
+            <br>
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password">
+            <br>
+            <button type="button" onclick="vall()">Submit</button>
+        </form>
+
+        <form id="secondForm">
+            <button type="button" onclick="show()">Nhap lai cha noi</button>
+        </form> -->
+    </div>
+
+
+    <script>
+        var email, password;
+        function check() {
+            email = document.getElementById("email").value;
+            password = document.getElementById("password").value;
+            if (email == "" || password == "") {
+                document.getElementById("error").innerHTML = "Please enter again";
+                return false;
+            } else {
+                document.getElementById("error").innerHTML = "";
+                return true;
+            }
+        }
+        function show() {
+            if (email && password) {
+                alert("Email: " + email + ", Password: " + password);
+            } else {
+                alert("Please enter email and password");
+            }
+            return false;
+        }
+    </script>
+
+
+
+
+
+    // bai 5
+    var email, password
+    function vall() {
+    email = document.getElementById("email").value
+    password = document.getElementById("password").value
+    if (email == "" || password == "") {
+    alert("Please enter again")
+    return false
+    }
+    return true
+    }
+    function show() {
+    if (!email || !password) {
+    console.log("Moi nhap lai")
+    } else {
+    console.log("Email: " + email)
+    console.log("Password: " + password)
+    }
+    }
+    document.getElementById("firstForm").addEventListener("submit", function (e) {
+    e.preventDefault()
+    return false
+    })
+    document.getElementById("secondForm").addEventListener("submit", function (e) {
+    e.preventDefault()
+    return false
+    })
+
+
+
+
+
+
+
+    // global
+    // var title = "Hello Ba Gia"
+    // function showTitle() {
+    // alert(title);
+    // }
+    // alert(showTitle());
+
+    // function showTitle() {
+    // var title = "Hello Ba Gia"
+    // alert(title);
+    // }
+    // alert(title)//loi
+
+    // bai 1
+    // function show() {
+    // var message = "Welcome to this web"
+    // alert(message)
+    // }
+
+    // bai 2
+    // var listVar = ["item one", "item two", "item three"]
+    // function show(index) {
+    // alert(listVar[index]);
+    // }
+
+    // bài 3 change color
+    // function changeColor() {
+    // document.body.style.backgroundColor = "pink"
+    // }
+
+    // // bai 4
+    // var cartCount = 0; // Khởi tạo biến global cartCount với giá trị ban đầu là 0
+    // // Thêm sự kiện cho nút thêm sản phẩm
+    // document.getElementById("add-to-cart-button").addEventListener("click", function () {
+    // cartCount++; // Tăng giá trị biến cartCount lên 1
+    // updateCartCount(); // Cập nhật giá trị cartCount trên giao diện người dùng
+    // });
+
+    // // Thêm sự kiện cho nút xóa sản phẩm
+    // document.getElementById("remove-from-cart-button").addEventListener("click", function () {
+    // if (cartCount > 0) { // Kiểm tra nếu giá trị cartCount lớn hơn 0
+    // cartCount--; // Giảm giá trị biến cartCount đi 1
+    // updateCartCount(); // Cập nhật giá trị cartCount trên giao diện người dùng
+    // }
+    // });
+
+    // // Hàm cập nhật giá trị cartCount trên giao diện người dùng
+    // function updateCartCount() {
+    // document.getElementById("cart-count").textContent = cartCount; // Cập nhật giá trị cartCount trên phần tử HTML có
+    id là "cart-count"
+    // }
+    </script>
+</body>
+
+</html>

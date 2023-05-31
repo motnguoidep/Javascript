@@ -1,0 +1,55 @@
+//bai1: in ra so chan 
+// for(let i = 0; i <= 100; i++){
+//     if(i%2 == 0){
+//         console.log( i);
+//     }
+// }
+
+//bai2: tim phan tu lon nhat trong mang
+
+// var arr = [3, 19, 7, 32, 12, 73]
+// var max = arr[0]
+// for(let i = 0; i <= arr.length; i++){
+//     if(arr[i] > max) {
+//         max = arr[i]
+//     }     
+// }
+// console.log(max);
+
+//bai3: tinh tong 
+// var n = 3
+// var tong = 0
+// for(let i = 1; i<= n; i++){
+//     tong += 1/i
+// }
+// console.log( tong); //infinity???
+
+//bai5: tim so lon nhat trong 3 so
+// var a = 19, b =  7, c = 23;
+// var solonnhat = a;
+// if(b > solonnhat){
+//     solonnhat = b
+// }else if(c > solonnhat){
+//     solonnhat = c
+
+// }
+// console.log(solonnhat);
+
+// tinh tong so le 
+// var tongsole = 0
+// for(let i = 1; i <= 100; i++){
+//     if(i%2 == 1){
+//         tongsole += i
+//     }
+// }
+// console.log(tongsole);
+
+//in ra bang cuu chuong 
+// for(let i = 2; i<=9; i++){
+//     console.log('bang cuu chuong:'+ i);
+//     for(let j = 1; j <=10; j++){
+//        console.log('i * j = ' + (i*j) );
+//     }
+// }
+
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart {
+            width: 600px;
+            height: 150px;
+            background: #dddd;
+            text-align: center;
+            border: 5px solid #dddd;
+            border-radius: 4px;
+            margin: 0 auto;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            height: 30px;
+            padding: 20px;
+        }
+
+        .errorColor,
+        .errorSize {
+            display: block;
+        }
+
+        .errorQuantity {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cart">
+        <ul>
+            <li>
+                <label for="color">Color</label>
+                <select id="color">
+                    <option value=""></option>
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="black">Black</option>
+                </select>
+                <p style="color: red" id="errorColor"></p>
+            </li>
+            <li>
+                <label for="size">Size</label>
+                <select id="size">
+                    <option value=""></option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+                <p style="color: red" id="errorSize"></p>
+            </li>
+            <li>
+                <label for="quantity">Quantity</label>
+                <input id="quantity" value="">
+                <p style="color: red" id="errorQuantity"></p>
+            </li>
+        </ul>
+
+        <button onclick="add()">Add</button>
+        <button onclick="remove()">Remove</button>
+        <button id="cart"><i class="fa-solid fa-cart-shopping"></i></button>
+        <p style="color: red" id="errorQuantity"></p>
+
+    </div>
+
+    <script>
+        var sum = 0;
+        function add() {
+            var color = document.getElementById("color").value;
+            var size = document.getElementById("size").value;
+            var quantity = parseInt(document.getElementById("quantity").value);
+
+            if (color === "") {
+                document.getElementById("errorColor").innerHTML = "Please choose your color";
+                return false;
+            } else {
+                document.getElementById("errorColor").style.display = "none";
+            }
+
+            if (size === "") {
+                document.getElementById("errorSize").innerHTML = "Please choose your size";
+                return false;
+            } else {
+                document.getElementById("errorSize").style.display = "none";
+            }
+            if (quantity < 1 || isNaN(quantity)) {
+                document.getElementById("errorSize").innerHTML = "Please choose your quantity again";
+                document.getElementById("errorSize").style.display = "block";
+                return false;
+            } else {
+                sum += quantity;
+                document.getElementById("cart").innerText = sum;
+            }
+        }
+        function remove() {
+            var quantity = document.getElementById("quantity").value;
+            if (sum === 0) {
+                document.getElementById("errorQuantity").innerHTML = "Còn nữa mô mà xóa";
+                document.getElementById("errorQuantity").style.display = "block";
+            } else if (sum < quantity) {
+                document.getElementById("errorQuantity").innerHTML = "cart quantity to remove is greater than cart quantity";
+                document.getElementById("errorQuantity").style.display = "block";
+            } else {
+                sum -= quantity;
+                document.getElementById("cart").innerText = sum;
+            }
+        }
+    </script>
+</body>
+
+</html>

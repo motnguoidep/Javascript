@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <style>
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <label for="msg">Message: </label>
+        <input type="text" id="welcometo">
+        <p id="error" style="color: red; display: none;" ></p>
+        <br>
+        <input type="button" name="welcome" value="welcome" onclick="active()"></input>
+    </form>
+
+    <script>
+        function active() {
+            var welcometo = document.getElementById("welcometo").value
+            if (welcometo == "") {
+                document.getElementById("error").innerHTML = "Please enter your message"
+            document.getElementById("error").style.display = "block"
+                return false
+            }
+            alert("Welcome to here")
+            // document.getElementById("error").style.display = "none"
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>index 1</title>
+</head>
+
+<body>
+    <h1>Index1</h1>
+    <p>- Tạo 1 trang index.html và tạo obj bằng rỗng.
+        Sau đó thêm key va value vào obj để tạo 1 obj đa cấp
+        Đưa obj đa cấp đó vào localstora</p>
+    <script>
+        var objFirst = {}
+
+        objFirst.name = "Thuong"
+        objFirst.age = 19
+        objFirst.address = "Quang Nam"
+
+        localStorage.setItem("objParent", JSON.stringify(objFirst))
+    </script>
+</body>
+
+
+</html>

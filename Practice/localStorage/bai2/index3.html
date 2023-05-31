@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+</head>
+
+<body>
+    <h1>index3</h1>
+    <p>-Tao index3.html: lây obj trong localstora ra va console xem có obj đã thêm trong bài 2 chưa?
+        Sau đó tim cách xoá 1 obj, ( xoá obj bằng key).
+        Rôi dua obj vao tiếp localstora</p>
+    <script>
+        var objThird = JSON.parse(localStorage.getItem("objParent"))
+        console.log(objThird);
+
+        delete objThird.name
+        delete objThird.age
+
+        localStorage.setItem("objParent", JSON.stringify(objThird))
+
+    </script>
+</body>
+
+</html>

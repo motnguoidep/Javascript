@@ -1,0 +1,82 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UFT-8">
+        <title>Search Tags</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="searchtags.css">
+    </head>
+    
+
+    <body>
+        <div class="wrapper">
+            <h2 class="title">Search Tags</h2>
+            <ul class="content">
+                <li>nodejs
+                    <i class="fa-solid fa-xmark"></i>
+                </li>
+                <li>reactjs 
+                    <i class="fa-solid fa-xmark"></i>
+                </li>
+                <input type="text" spellcheck="false" placeholder="Type and enter">
+            </ul>
+            <button class="btn-removeAll">Remove All</button>
+        </div>
+
+        <button id="myButton">Click Me</button>
+        <div id="myDiv"></div>
+        
+    </body>
+    <script src="searchtags.js"></script>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.ancestors * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    // find: tim kiem the html/class/id con
+    // this: la 1 bien, dai dien cho the html dang click vao
+
+    $("li").click(function(){
+        $("li").find("span").css({"color": "red", "border": "2px solid red"});
+
+        // $(this).find("span").css({"color": "red", "border": "2px solid red"})
+        // $(this).find("span").hide(); 
+    })
+  
+});
+</script>
+</head>
+
+<body class="ancestors">
+  <div style="width:500px;">div (grandparent)
+    <ul>ul (direct parent)  
+      <li>li (child)
+        <span>span (grandchild)
+             <span>abcs</span>
+        </span>
+      </li>
+      <li>li (child)
+        <span>span (grandchild)</span>
+      </li>
+      <li>li (child)
+        <span>span (grandchild)</span>
+      </li>
+    </ul>   
+  </div>
+</body>
+
+</html> 

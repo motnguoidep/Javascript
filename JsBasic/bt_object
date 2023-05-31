@@ -1,0 +1,56 @@
+//Tạo một đối tượng "person" có các thuộc tính "name", "age", "gender" và in ra thông tin đó:
+// var person = {
+//     name: 'thuong',
+//     age: '19',
+//     gender: 'Bede'
+// }
+// console.log(person);
+
+// Tạo một đối tượng "person" có phương thức "introduce" để chào hỏi người dùng:
+// var person = {
+//     name: 'thuong',
+//     age: '19',
+//     gender: 'Bede',
+//     introduce: function () {
+//         console.log('hello, my name is ' + person.name);
+//     },
+// }
+// person.introduce();
+
+// // Viết một chương trình JavaScript để lưu trữ thông tin sinh viên gồm tên, tuổi và điểm trung bình.
+// // In ra thông tin của tất cả các sinh viên đã lưu tru
+// var students = [
+//     {
+//         name: 'thuong',
+//         age: 19,
+//         average: 6
+//     },
+//     {
+//         name: 'thu',
+//         age: 30,
+//         average: 9
+//     },
+//     {
+//         name: 'thinh',
+//         age: 23,
+//         average: 8.5
+//     }
+// ]
+// console.log(students);
+
+
+
+
+
+// Viết một chương trình JavaScript để lưu trữ thông tin của một đơn hàng,
+// bao gồm tên sản phẩm, số lượng và đơn giá.
+// Tính tổng tiền của đơn hàng đó.
+let order = {
+    name: 'chocolate',
+    quantity: 3,
+    price: 200
+}
+var total
+total = order.price * order.quantity
+console.log('tong tien cua don hang la: ' + total);
+

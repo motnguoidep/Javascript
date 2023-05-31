@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <h1>index2</h1>
+    <p>- Tạo tiếp 1 trang index2.html và gọi obj trong localstora ở bài 1 ra.
+        Dùng map để duyêtj và hiển thị các value dưới dạng console
+        sau đo add thêm 1 ọbj vào và đưa vao localstora.
+    
+ 
+    </p>
+
+    <script>
+        var getObjParent = JSON.parse(localStorage.getItem("objParent"))
+
+        Object.values(getObjParent).map(function (value) {
+            console.log(value);
+        })
+
+        var objSecond = {
+            name: "hoa",
+            age: "3",
+            address: "Thanh Hoa"
+        }
+
+        localStorage.setItem("objParent", JSON.stringify(objSecond))
+
+    </script>
+</body>
+
+</html>

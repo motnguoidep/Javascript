@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>form</title>
+</head>
+
+<body>
+    <h1>create a form </h1>
+    <form id="form">
+        <label for="username">Username</label>
+        <input type="text" id="username">
+        <br>
+        <label for="email">Email</label>
+        <input type="text" id="email">
+        <br>
+        <button type="button" onclick="saveObj()">Submit</button>
+    </form>
+
+    <!-- <p>Tao 1 form có 2 input:
+        username và email
+        click submit form thi lấy 2 value trên dua vao obj.
+        click tiếp lân 2, 3 thi tuong tư nhu trên, đưa toàn bộ vào obj cha như sau:
+        {
+        'baovic': {
+        'xx': 'baovic'
+        'yy': 'ac@gmail.com'
+        },
+        ‘namihuong’: {
+        'xx': 'namihuong'
+        'yy': 'ac@gmail.com'
+        },
+        'nhuquynh': {
+        'xx': 'nhuquynh'
+        'yy': 'ac@gmail.com'
+        },
+        }
+        "xx" va "yy" làm key của objCon, và lây chinh value cua username làm key khi dua vao objCha
+        Phan
+        Hùng Phan
+        nghia la khi e click lan dau thi e phai tao dc ojb con
+        {
+        'xx': 'baovic'
+        'yy': 'ac@gmail.com'
+        }
+        Sau do dua vao OBJ CHA như sau.
+        {
+        'baovic': {
+        'xx': 'baovic'
+        'yy': 'ac@gmail.com'
+        }
+        }
+
+        Khi nhap tiep thi add them vao:
+        {
+        'baovic': {
+        'xx': 'baovic'
+        'yy': 'ac@gmail.com'
+        },
+        ‘namihuong’: {
+        'xx': 'namihuong'
+        'yy': 'ac@gmail.com'
+        }
+        }</p> -->
+
+    <script>
+        var objParent = {}
+
+        function saveObj() {
+            var username = document.getElementById("username").value
+            var email = document.getElementById("email").value
+
+            var objChild = {
+                "username": username,
+                "email": email
+            }
+
+            if (username in objParent) {
+                console.log("Error")
+            } else {
+                objParent[username] = objChild
+                console.log(objParent)
+            }
+        }
+    </script>
+</body>
+
+</html>

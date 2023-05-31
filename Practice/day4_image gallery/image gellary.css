@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background-color: #dadada;
+    display: flex;
+}
+.wrapper{
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+     
+}
+.image{
+    width: 22%;
+    height: 200px;
+    overflow: hidden;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: 0.25s;
+}
+.image:hover img{
+    transform: scale(1.2);
+}
+.gallery .show{
+    opacity: 1; 
+    pointer-events: auto;
+    transform: scale(1);
+}
+.gallery{
+    position: fixed;
+    /* top: 0;
+    left: 0; */
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    /* z-index: 1; */
+    display: flex;
+    align-items: center;
+    color: #fff;
+    opacity: 0; /*display: none*/
+    pointer-events: none;
+    transform: scale(0.8); /*toa ra*/
+    transition: 0.25s;
+}
+.control{
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 50px;
+    cursor: pointer;
+}
+.prev{
+    left: 15px;
+}
+.next{
+    right: 15px;
+}
+.gallery-inner{
+    width: 70%;
+    height: 70%;
+    margin: auto;
+}
+.close{
+    color: white;
+    font-size: 35px;
+    position: fixed;
+    top: 15px;
+    right: 25px;
+    cursor: pointer;
+}
+.hide{
+   display: none;
+}
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>localStorage</title>
+
+    <style>
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>localStorage</h1>
+    <form id="dataForm">
+        <label for="info">Enter information: </label>
+        <input type="text" id="info">
+        <br>
+        <button type="button" onclick="saveInfo()">Save Info</button>
+        <button type="button" onclick="showInfo()">Show Info</button>
+
+    </form>
+
+
+    <script>
+        // object -> json.string -> localStorage -> json.parse -> object
+        // var people = {
+        //     name: "thuong",
+        //     age: 19,
+        //     address: "Quang nam"
+        // }
+        // localStorage.setItem("user",JSON.stringify(people))
+        // var show = JSON.parse(localStorage.getItem("user"))
+        // console.log(show);
+
+
+        function saveInfo() {
+            var data = document.getElementById("info").value;
+            localStorage.setItem("information", data);
+            alert("Data saved successfully!");
+            document.getElementById("info").value = "";
+        }
+
+        function showInfo() {
+            var data = localStorage.getItem("information");
+            if (data) {
+                alert("Data: " + data);
+            } else {
+                alert("No data available!");
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
