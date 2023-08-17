@@ -1,0 +1,195 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h4>Bài 3: tính diện tích hình vuông khi biết cạnh a</h4>
+        <label for="canhA">Cạnh A:</label>
+        <input type="number" id="canha">
+        
+        <button onclick="Bai3()">Check</button>
+        <p id="result3"></p> 
+
+        <h4>Bài 4: tính diện tích hình chữ nhât khi biết 2 cạnh a, b</h4>
+        <label for="canhA">Cạnh A:</label>
+        <input type="number" id="canha">
+        
+        <label for="canhB">Cạnh B:</label>
+        <input type="number" id="canhb">
+        <br>
+        
+        <button onclick="Bai4()">Check</button>
+        <p id="result4"></p> 
+
+        <h4>Bài 5: Tính dịên tích tam giác vuông khi biết 2 cạnh kề a,b</h4>
+        <label for="canhA">Cạnh A:</label>
+        <input type="number" id="canha">
+        
+        <label for="canhB">Cạnh B:</label>
+        <input type="number" id="canhb">
+        <br>
+        
+        <button onclick="Bai5()">Check</button>
+        <p id="result5"></p>
+    
+        <h4>Bài 7: Giải phương trình bặc 2</h4>
+        <label for="canhA">Cạnh A:</label>
+        <input type="number" id="a">
+        
+        <label for="canhB">Cạnh B:</label>
+        <input type="number" id="b">
+    
+        <label for="canhC">Cạnh C:</label>
+        <input type="number" id="c">
+        <br>
+        
+        <button onclick="Bai7()">Check</button>
+        <p id="result7"></p>
+    
+
+        <h4>Bài 8: Kiểm tra xem số nhập vào có phải số tuổi của một người không. một số nguyên là tuổi của một người khi nhỏ 120 và  lớn 0</h4>
+        <label for="input">Input:</label>
+        <input type="number" id="input"><br>
+        
+        <button onclick="Bai8()">Check</button>
+        <p id="result8"></p>
+    
+        <h4>Bài 9: Kiểm tra xem  số thực(a,b,c) nhập vào có phải là cạnh của một tam giác. điều kiện để a,b,c là cạnh của một tam giác</h4>
+        <label for="canhA">Cạnh A:</label>
+        <input type="number" id="canhA">
+        
+        <label for="canhB">Cạnh B:</label>
+        <input type="number" id="canhB">
+
+        <label for="canhC">Cạnh C:</label>
+        <input type="number" id="canhC">
+        <br>
+        
+        <button onclick="Bai9()">Check</button>
+        <p id="result9"></p>
+
+        <h4>Bài 10: Tính tiền điện</h4>
+        <label for="chudien">Chữ điện: </label>
+        <input type="number" id="chudien">
+
+        <button onclick="Bai10()">Check</button>
+        <p id="result10"></p>
+
+        <h4>Bài 11: Tính thuế thu nhập cá nhân </h4>
+        <label for="thunhap">Thu nhập: </label>
+        <input type="number" id="thunhap">
+
+        <button onclick="Bai11()">Check</button>
+        <p id="result11"></p>
+
+    
+    
+       <script>
+        function Bai11() {
+            var thunhap = parseFloat(document.getElementById("thunhap").value)
+            var resultElement = document.getElementById("result11")
+            var thue = 0
+
+            if(thunhap <= 5000000){
+                thue = thunhap * 0.05
+            }else if(thunhap <= 10000000){
+                thue = 5000000* 0.05 + (thunhap - 5000000) * 0.1
+            }else{
+                thue = 5000000 * 0.05 + 5000000 * 0.1 + (thunhap - 10000000) * 0.15
+            }
+            resultElement.textContent = "Thuế: " + thue
+        }
+
+        function Bai3() {
+            var a = parseFloat(document.getElementById("canha").value);
+            var resultElement = document.getElementById("result3");
+            var dientich = a * a;
+
+            resultElement.textContent = "Diện tích: " + dientich;
+        }
+        function Bai4() {
+            var a = parseFloat(document.getElementById("canha").value);
+            var b = parseFloat(document.getElementById("canhb").value);
+            
+            var resultElement = document.getElementById("result4");
+            var dientich = a * b;
+
+            resultElement.textContent = "Diện tích: " + dientich;
+        }
+
+        function Bai5() {
+            var a = parseFloat(document.getElementById("canha").value);
+            var b = parseFloat(document.getElementById("canhb").value);
+         
+            var resultElement = document.getElementById("result5");
+            var dientich = (1/2) * a * b;
+
+            resultElement.textContent = "Diện tích: " + dientich;
+        }
+
+
+        function Bai7() {
+            var a = parseFloat(document.getElementById("a").value);
+            var b = parseFloat(document.getElementById("b").value);
+            var c = parseFloat(document.getElementById("c").value);
+            var resultElement = document.getElementById("result7");
+            var dt = b * b - 4 * a * c;
+
+            if (a === 0) {
+                resultElement.textContent = "Không phải PT bậc 2";
+            } else if (dt === 0) {
+                var x = -b / (2 * a);
+                resultElement.textContent = "Phương trình có nghiệm kép x = " + x;
+            } else if (dt > 0) {
+                var x1 = (-b + Math.sqrt(dt)) / (2 * a);
+                var x2 = (-b - Math.sqrt(dt)) / (2 * a);
+                resultElement.textContent = "Phương trình có 2 nghiệm x1 = " + x1 + ", x2 = " + x2;
+            } else {
+                resultElement.textContent = "Phương trình vô nghiệm";
+            }
+        }
+
+        function Bai8() {
+            var input = parseInt(document.getElementById("input").value);
+            var resultElement = document.getElementById("result8");
+
+            if (input > 0 && input < 120) {
+                resultElement.textContent =  " Là tuổi của một người.";
+            } else {
+                resultElement.textContent =  " Không phải là tuổi của một người.";
+            }
+        }
+
+        function Bai9() {
+            var a = parseFloat(document.getElementById("canhA").value)
+            var b = parseFloat(document.getElementById("canhB").value)
+            var c = parseFloat(document.getElementById("canhC").value)
+            var resultElement = document.getElementById("result9")
+
+            if(a+b>c && b+c>a && a+c>b){
+                resultElement.textContent = "3 số vừa nhập là cạnh của một tam giác"
+            }else {
+                resultElement.textContent = "3 số vừa nhập không phải là cạnh của 1 tam giac"
+            }
+        }
+        function Bai10() {
+            var chudien = parseFloat(document.getElementById("chudien").value)
+            var resultElement = document.getElementById("result10")
+            var giachudien = 3000
+            var tienphaitra = 0
+
+            if(chudien <= 50) {
+                tienphaitra = chudien*giachudien
+            }else if(chudien <= 100){
+                tienphaitra = 50*giachudien +(chudien-50)*3500
+            }else{
+                tienphaitra = 50*giachudien + 50*1500 + (chudien-100)*4000
+            }
+            resultElement.textContent = tienphaitra
+        }
+
+
+       </script>
+
+    </body>
+</html>

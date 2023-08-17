@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BÀI TẬP CODEGYM</title>
+</head>
+<body>
+    <h4>Bài 1: Kiểm tra xem a có chia hết cho b không ?</h4>
+    <label for="inputA">Input a:</label>
+    <input type="number" id="inputA">
+    
+    <label for="inputB">Input b:</label>
+    <input type="number" id="inputB"><br>
+    
+    <button onclick="Bai1()">Check</button>
+    <p id="result"></p>
+
+    <h4>Bài 2: Nhập tuổi và in ra kts quả nú học sinh đó không đủ điều kiện vào lớp 10</h4>
+    <p>Age Input:</p>
+    <input type="number" id="input">
+    <button onclick="Bai2()">Check</button>
+    <p id="check"></p>
+
+    <h4>Bài 3: Nhập một số nguyên để nói cho người dùng biết số đó lớn hay nhỏ hơn 0</h4>
+    <p>Input:</p>
+    <input type="number" id="inputNumber">
+    <button onclick="Bai3()">Check</button>
+    <p id="checkBa"></p>
+
+    <h4>Bài 4: Nhập 3 số nguyên và tìm giá trị lớn nhất của  số nguyên đó</h4>
+    <label for="inputI">Input a:</label>
+    <input type="number" id="inputI">
+    
+    <label for="inputII">Input b:</label>
+    <input type="number" id="inputII">
+    
+    <label for="inputIII">Input c:</label>
+    <input type="number" id="inputIII"><br>
+    
+    <button onclick="Bai4()">Check</button>
+    <p id="result4"></p>
+
+    <h4>Bài 5: xếp hạng học lực học sinh dựa vào điểm kiểm tra, điểm giữa kỳ, điểm cuối kỳ</h4>
+    <label for="diemkiemtra">Điểm kiểm tra:</label>
+    <input type="number" id="diemkiemtra">
+    
+    <label for="diemgiuaky">Điểm giữa kỳ:</label>
+    <input type="number" id="diemgiuaky">
+    
+    <label for="diemcuoiky">Điểm cuối kỳ:</label>
+    <input type="number" id="diemcuoiky"><br>
+    
+    <button onclick="Bai5()">Xếp loại</button>
+    <p id="result5"></p>
+
+    <h4>Tính hoa hồng dựa vào mức doanh thu bán hàng</h4>
+    <label for="doanhthu">Doanh thu:</label>
+    <input type="number" id="doanhthu"><br>
+    
+    <button onclick="Bai6()">Hoa hồng</button>
+    <p id="result6"></p>
+
+    <!-- ======================= -->
+    
+
+    <script>
+    
+       
+
+        function Bai1() {
+            var a = parseInt(document.getElementById("inputA").value);
+            var b = parseInt(document.getElementById("inputB").value);
+            var resultElement = document.getElementById("result");
+            if (a % b === 0) {
+                resultElement.textContent = a + " chia hết cho " + b;
+            } else {
+                resultElement.textContent = a + " không chia hết cho " + b;
+            }
+        }
+
+        function Bai2() {
+            var age = parseInt(document.getElementById("input").value);
+            var resultElement = document.getElementById("check");
+
+            if (age >= 15) {
+                resultElement.textContent = "Đủ điều kiện vào lớp 10";
+            } else {
+                resultElement.textContent = "Không đủ điều kiện vào lớp 10";
+            }
+        }
+
+        function Bai3() {
+            var number = parseInt(document.getElementById("inputNumber").value);
+            var resultElement = document.getElementById("checkBa");
+
+            if (number > 0) {
+                resultElement.textContent = "Số này lớn hơn 0";
+            } else if (number < 0) {
+                resultElement.textContent = "Số này nhỏ hơn 0";
+            } else {
+                resultElement.textContent = "Số này bằng 0";
+            }
+        }
+
+        function Bai4() {
+            var a = parseInt(document.getElementById("inputI").value)
+            var b = parseInt(document.getElementById("inputII").value)
+            var c = parseInt(document.getElementById("inputIII").value)
+            var resultElement = document.getElementById("result4")
+ 
+            if ( a > b && a > c){
+                resultElement.textContent = "A là số lớn nhất"
+            } else if (b > a && b > c) {
+                resultElement.textContent = "B là số lớn nhất"
+            } else if (c > a && c > b) {
+                resultElement.textContent = "C là số lớn nhất"
+            } else {
+                resultElement.textContent = "Hai số bằng nhau"
+            }
+        }
+
+        function Bai5() {
+            var diemkiemtra = parseFloat(document.getElementById("diemkiemtra").value);
+            var diemgiuaky = parseFloat(document.getElementById("diemgiuaky").value);
+            var diemcuoiky = parseFloat(document.getElementById("diemcuoiky").value);
+            var diemtrungbinh = (diemkiemtra + diemgiuaky + diemcuoiky) / 3;
+            var resultElement = document.getElementById("result5");
+
+            if (diemtrungbinh >= 8.5) {
+                resultElement.textContent = "Xuất sắc";
+            } else if (diemtrungbinh >= 7.5) {
+                resultElement.textContent = "Giỏi";
+            } else if (diemtrungbinh >= 5.5) {
+                resultElement.textContent = "Khá";
+            } else if (diemtrungbinh >= 4) {
+                resultElement.textContent = "Trung bình";
+            } else {
+                resultElement.textContent = "Yếu";
+            }
+        }
+        function Bai6() {
+            var doanhthu = parseFloat(document.getElementById("doanhthu").value);
+            var resultElement = document.getElementById("result6");
+            var hoahong = 0;
+
+            if (doanhthu >= 1000000000) {
+                hoahong = doanhthu * 0.1;
+            } else if (doanhthu >= 500000000) {
+                hoahong = doanhthu * 0.07;
+            } else if (doanhthu >= 200000000) {
+                hoahong = doanhthu * 0.05;
+            } else {
+                hoahong = doanhthu * 0.03;
+            }
+
+            resultElement.textContent = hoahong;
+        }
+
+    </script>
+</body>
+</html>
