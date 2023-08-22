@@ -7,14 +7,18 @@
 
 //bai2: tim phan tu lon nhat trong mang
 
-// var arr = [3, 19, 7, 32, 12, 73]
-// var max = arr[0]
-// for(let i = 0; i <= arr.length; i++){
-//     if(arr[i] > max) {
-//         max = arr[i]
-//     }     
-// }
-// console.log(max);
+var arr = [3, 19, 7, 32, 12, 73]
+var max = arr[0]
+for(let i = 0; i <= arr.length; i++){
+    if(arr[i] > max) {
+        max = arr[i]
+    }     
+}
+console.log(max);
+//bai3: nhap vao mot mang so nguyen va dao nguoc phan tu
+var arr = [ 3, 19, 7, 32, 12, 73]
+
+
 
 //bai3: tinh tong 
 // var n = 3
