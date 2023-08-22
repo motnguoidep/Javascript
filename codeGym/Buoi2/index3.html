@@ -1,0 +1,87 @@
+<html>
+    <head>
+         <title>CodeGym</title>
+    </head>
+    <body>
+        <h1>BÀI TẬP HÀM - FUNCTION</h1>
+
+        <h4>Bai4: Viết hàm nhận vào một số, kiểm tra xem số đưa vào phải số nguyên dương hay không. Nếu phải trả về TRUE</h4>
+        <label for="input">Input: </label>
+        <input type="number" id="input">
+        <button onclick="Bai4()">Check</button>
+        <p id="result4"></p>
+
+        <h4>Bài 5: Viết hàm nhận vào 3 số nguyên dương bất kỳ, trả về số nguyên dương nhỏ nhất</h4>
+
+        <label for="input">Input a: </label>
+        <input type="number" id="inputa">
+        <label for="input">Input b: </label>
+        <input type="number" id="inputb">
+        <label for="input">Input c: </label>
+        <input type="number" id="inputc">
+
+        <button onclick="Bai5()">Check</button>
+        <p id="result5"></p>
+
+        <h4>Bài 7: Viết hàm nhận vào 2 số nguyên dương bất kỳ, đổi chỗ 2 số đó</h4>
+        <label for="inputa">Input a: </label>
+        <input type="number" id="inputa">
+        <label for="inputb">Input b: </label>
+        <input type="number" id="inputb">
+        <button onclick="Bai7()">Check</button>
+        <p id="result7"></p>
+
+        <h4>Bài 8: Viết hàm truyền vào mảng bất kỳ, sau đó đảo ngược mảng số nguyên đó</h4>
+        <label for="input">Nhập mảng số nguyên: </label>
+        <input type="text" id="input">
+        <button onclick="Bai8()">Đảo ngược và Hiển thị</button>
+        <p id="result8"></p>
+
+
+
+        <script>
+            const reverseArray = arr => [...arr].reverse();
+            function Bai8() {
+                var input = document.getElementById("input")
+                var input2 = input.split(',').map(item => parseInt(item.trim()))
+
+                var reverse =  reverseArray(input2)
+                var resultElement = document.getElementById("input2")
+
+            }
+
+            function Bai4(){
+               var input = parseInt(document.getElementById("input").value)
+               var resultElement = document.getElementById("result4")
+               
+               input >= 0 ?
+               resultElement.textContent = `${input} là số nguyên dương` :
+               resultElement.textContent = `${input} không phai la số nguyên dương`
+            }
+
+            function Bai5() {
+                var a = parseInt(document.getElementById("inputa").value)
+                var b = parseInt(document.getElementById("inputb").value)
+                var c = parseInt(document.getElementById("inputc").value)
+                var resultElement = document.getElementById("result5")
+
+                var minNumber = (a<b && a<c) ? "a" : ((b<a && b<c) ? "b" : "c")
+                resultElement.textContent = `${minNumber} là số nhỏ nhất`
+            }
+
+            // em nghĩ bài 7 như này là đúng nhưng két quả trả vf sau khi đổi chỗ là NaN. 
+            // em không hiểu sai chỗ mô
+            function Bai7() {
+                let a = parseInt(document.getElementById("inputa").value);
+                let b = parseInt(document.getElementById("inputb").value);
+                const resultElement = document.getElementById("result7");
+
+                [a, b] = [b, a];
+                resultElement.textContent = `Sau khi đổi chỗ: a = ${a}, b = ${b}`;
+            } 
+        </script>
+
+        
+        
+    </body>
+</html>
