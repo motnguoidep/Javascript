@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Details</title>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+#bookingDetails {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    margin: 10px 0;
+    color: #555;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+    </style>
+</head>
+
+<body>
+    <h1>Booking Details</h1>
+    <div id="bookingDetails">
+        <!-- Detailed information about the booking will be displayed here -->
+    </div>
+
+    <!-- Add any necessary JavaScript here -->
+    <script>
+        // Sample booking data (replace this with your actual data)
+        var bookings = [
+            {
+                id: "123456",
+                name: "John Doe",
+                destination: "Paris",
+                checkInDate: "2024-08-15",
+                checkOutDate: "2024-08-20",
+                numTravelers: 2,
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL8peggt4wOHGVW0hN5mGhwCZgFuSn52LAkQ&usqp=CAU"
+            },
+            // Add more booking data here...
+        ];
+
+        // Function to retrieve query parameters from URL
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to find booking details by ID
+        function findBookingById(bookingId) {
+            return bookings.find(booking => booking.id === bookingId);
+        }
+
+        // Function to display booking details
+        function displayBookingDetails(booking) {
+            document.getElementById('bookingDetails').innerHTML = `
+                <h2>${booking.name}</h2>
+                <p><strong>Destination:</strong> ${booking.destination}</p>
+                <p><strong>Check-in Date:</strong> ${booking.checkInDate}</p>
+                <p><strong>Check-out Date:</strong> ${booking.checkOutDate}</p>
+                <p><strong>Number of Travelers:</strong> ${booking.numTravelers}</p>
+                <img src="${booking.image}" alt="Booking Image">
+            `;
+        }
+
+        // Main function to load booking details
+        window.onload = function () {
+            // Retrieve booking ID from URL query parameter
+            var bookingId = getQueryParam('id');
+            if (bookingId) {
+                // Find booking details by ID
+                var booking = findBookingById(bookingId);
+                if (booking) {
+                    // Display booking details
+                    displayBookingDetails(booking);
+                } else {
+                    // Booking not found
+                    document.getElementById('bookingDetails').innerHTML = '<p>Booking not found.</p>';
+                }
+            } else {
+                // No booking ID provided
+                document.getElementById('bookingDetails').innerHTML = '<p>No booking ID provided.</p>';
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Information</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-top {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .search-btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body onload="listBookings()">
+    <div class="container">
+        <!-- Search Form -->
+        <div class="row search-container">
+            <div class="col-md-8">
+                <input type="text" id="searchInput" class="search-input" placeholder="Nhập điều kiện tìm kiếm...">
+            </div>
+            <div class="col-md-4">
+                <button class="search-btn" onclick="searchBookings()">Tìm kiếm</button>
+            </div>
+        </div>
+
+        <!-- Booking Cards -->
+        <div class="row" id="bookings">
+        </div>
+
+        <!-- Add Booking Form -->
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Thêm Booking</h5>
+                        <form onsubmit="addBooking(event)">
+                            <div class="mb-3">
+                                <label for="nameInput" class="form-label">Tên</label>
+                                <input type="text" class="form-control" id="nameInput" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="destinationInput" class="form-label">Điểm Đến</label>
+                                <input type="text" class="form-control" id="destinationInput" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="checkInDateInput" class="form-label">Ngày Check-in</label>
+                                <input type="date" class="form-control" id="checkInDateInput" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="checkOutDateInput" class="form-label">Ngày Check-out</label>
+                                <input type="date" class="form-control" id="checkOutDateInput" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="numTravelersInput" class="form-label">Số Lượng Người Đi</label>
+                                <input type="number" class="form-control" id="numTravelersInput" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="imageInput" class="form-label">Ảnh</label>
+                                <input type="file" class="form-control" id="imageInput" accept="image/*" onchange="handleImageUpload(event)">
+                            </div>
+                            <img id="imagePreview" src="#" alt="Ảnh trước khi tải lên" style="max-width: 100%; display: none;">
+                            <button type="submit" class="btn btn-primary">Thêm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var bookings = [
+            // Dữ liệu booking mẫu
+        ];
+
+        function listBookings() {
+            var bookingHTML = '';
+            for (var i = 0; i < bookings.length; i++) {
+                bookingHTML += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="${bookings[i].image}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">${bookings[i].name}</h5>
+                                <p class="card-text">Destination: ${bookings[i].destination}</p>
+                                <p class="card-text">Check-in Date: ${bookings[i].checkInDate}</p>
+                                <p class="card-text">Check-out Date: ${bookings[i].checkOutDate}</p>
+                                <p class="card-text">Number of Travelers: ${bookings[i].numTravelers}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            document.getElementById('bookings').innerHTML = bookingHTML;
+        }
+
+        function addBooking(event) {
+            event.preventDefault();
+            var name = document.getElementById('nameInput').value;
+            var destination = document.getElementById('destinationInput').value;
+            var checkInDate = document.getElementById('checkInDateInput').value;
+            var checkOutDate = document.getElementById('checkOutDateInput').value;
+            var numTravelers = document.getElementById('numTravelersInput').value;
+            var image = document.getElementById('imagePreview').src; // Lấy đường dẫn URL của ảnh đã được tải lên
+            var newBooking = {
+                name: name,
+                destination: destination,
+                checkInDate: checkInDate,
+                checkOutDate: checkOutDate,
+                numTravelers: numTravelers,
+                image: image // Thêm đường dẫn URL của ảnh vào booking
+            };
+            bookings.push(newBooking);
+            listBookings();
+            resetForm();
+        }
+
+        function resetForm() {
+            document.getElementById('nameInput').value = '';
+            document.getElementById('destinationInput').value = '';
+            document.getElementById('checkInDateInput').value = '';
+            document.getElementById('checkOutDateInput').value = '';
+            document.getElementById('numTravelersInput').value = '';
+            document.getElementById('imagePreview').style.display = 'none'; // Ẩn hình ảnh trước khi tải lên
+        }
+
+        function searchBookings() {
+            var searchInput = document.getElementById('searchInput').value.toLowerCase();
+            var filteredBookings = bookings.filter(function (booking) {
+                return booking.name.toLowerCase().includes(searchInput) ||
+                    booking.destination.toLowerCase().includes(searchInput) ||
+                    booking.checkInDate.includes(searchInput) ||
+                    booking.checkOutDate.includes(searchInput);
+            });
+
+            var bookingHTML = '';
+            for (var i = 0; i < filteredBookings.length; i++) {
+                bookingHTML += `
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="${filteredBookings[i].image}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">${filteredBookings[i].name}</h5>
+                                <p class="card-text">Destination: ${filteredBookings[i].destination}</p>
+                                <p class="card-text">Check-in Date: ${filteredBookings[i].checkInDate}</p>
+                                <p class="card-text">Check-out Date: ${filteredBookings[i].checkOutDate}</p>
+                                <p class="card-text">Number of Travelers: ${filteredBookings[i].numTravelers}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            document.getElementById('bookings').innerHTML = bookingHTML;
+        }
+
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const imagePreview = document.getElementById('imagePreview');
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block'; // Hiển thị hình ảnh trước khi tải lên
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+
+</html>
